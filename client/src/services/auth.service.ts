@@ -1,7 +1,7 @@
 import { IUser } from './interface'
-const API_URL = 'http://localhost:0666/api/';
+const API_URL = 'http://localhost:8001/api/';
 
-export const register = ({email, password, username}: IUser) =>{
+export const register = ({ email, password, username }: IUser) =>{
     return fetch(API_URL + 'register', {
         method: 'POST',
         headers: {
