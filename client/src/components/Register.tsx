@@ -12,8 +12,7 @@ const handleSubmit = (e: React.FormEvent) => {
   register({username, email, password})
    .then(res => {
        console.log(res);
-   })
-  
+   });
 }
 
   return (
