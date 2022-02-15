@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
+import user from '../schemas/User.js'
 
 export const register = (req, res, next) => {
-    console.log(req.body);
-    res.json(req.body);
+  const { email, name, password } = req.body;
 }
 
