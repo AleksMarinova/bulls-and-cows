@@ -1,8 +1,8 @@
 import { IUser } from './interface'
 const API_URL = 'http://localhost:8001/api/';
 
-export const register = ({ email, password, username }: IUser) =>{
-    return fetch(API_URL + 'register', {
+export const register = async ({ email, password, username }: IUser) =>{
+    return await fetch(API_URL + 'register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -12,5 +12,5 @@ export const register = ({ email, password, username }: IUser) =>{
             password: password,
             username: username
         })
-    })
+    }).then(res => res.json())
 }

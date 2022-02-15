@@ -1,18 +1,20 @@
 import { useState } from 'react';
-import { register } from '../services/auth.service'
+import { register } from '../services/auth.service';
+import { useNavigate } from 'react-router-dom';
 
 const Register: React.FC = () => {
 const [username, setUsername] = useState("");
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
+const navigate = useNavigate();
 
 const handleSubmit = (e: React.FormEvent) => {
   e.preventDefault();
   e.stopPropagation();
   register({username, email, password})
-   .then(res => {
-       console.log(res);
-   });
+    .then(res => {
+      navigate('/login');
+    });
 }
 
   return (
