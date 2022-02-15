@@ -24,10 +24,10 @@ app.use(morgan('dev'));
 
 app.use('/api', authRoutes);
 
-// app.use((err, req, res, next) => {
-//   console.log('im the error handler')
-//   res.status(500).json({ message: err.message });
-// });
+app.use((err, req, res, next) => {
+  console.log('im the error handler')
+  res.status(500).json({ message: err.message });
+});
 
 process.on('SIGINT', () => {
   mongoose.connection.close(() => {
