@@ -35,7 +35,7 @@ const handleSubmit = (e: React.FormEvent) => {
         </form>
         <div className="register-redirect">
           <p>Already have an account?</p>
-          <button onClick={()=>navigate('/login')}>Login</button>
+          <button onClick={()=>navigate('/login')}>Log in!</button>
         </div>
     </div>
   )
