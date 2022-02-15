@@ -21,8 +21,8 @@ const handleSubmit = (e: React.FormEvent) => {
     <div className="register-container">
         <h1>Register</h1>
         <form onSubmit={(e)=>handleSubmit(e)} >
-           <label>Name</label>
-           <input type="text" placeholder="name" value={username} onChange={(e)=>setUsername(e.target.value)}/>
+           <label>Username</label>
+           <input type="text" placeholder="username" value={username} onChange={(e)=>setUsername(e.target.value)}/>
            <label>Email</label>
            <input type="text" placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
            <label>Password</label>
