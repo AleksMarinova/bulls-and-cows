@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "author": "",
@@ -17,5 +18,9 @@
     "mongoose": "^6.2.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
+  },
+  "engines": {
+    "node": "16.x",
+    "npm": "7.x"
   }
 }
