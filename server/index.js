@@ -22,6 +22,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
+// remember to delete
 app.get('/', (req, res) => { res.json('Hello from Express!')})
 
 app.use('/api', authRoutes);
