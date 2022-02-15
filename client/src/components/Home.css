@@ -1,0 +1,41 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.home h1 { 
+  
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5rem;
+    width: 51%;
+    height: 10vh;
+}
+
+.home .logo img {
+    width: 100%;
+    height: auto;
+    max-height: 40vh;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+}
+
+.home button { 
+    width: 40%;
+    height: 5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 0.3rem;
+}
+
+.home button:last-child{ 
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+}
