@@ -1,5 +1,5 @@
 import { IUser } from './interface'
-const API_URL = 'http://localhost:8001/api/';
+const API_URL = 'https://bulls-and-cows-server.herokuapp.com/api/';
 
 export const register = async ({ email, password, username }: IUser) =>{
     return await fetch(API_URL + 'register', {
