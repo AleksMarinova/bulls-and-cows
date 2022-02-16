@@ -19,7 +19,7 @@ const Login = () => {
     login(user).then(response => {
       if (response.status === 200) {
         response.json().then(user => setLocalStorage({ email: user.email, username: user.username }));
-        navigate('/game');
+        navigate('/setup');
       }
     });
   }

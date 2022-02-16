@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-
+import Setup from './components/Setup';
 import Login from './components/Login';
 import Home from './components/Home';
 import Register from './components/Register';
@@ -14,7 +14,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        {/* <Route path='/login' element={<Game />} /> */}
+        <Route path='/setup' element={<Setup />} />
       </Routes>
     </div>
   );
