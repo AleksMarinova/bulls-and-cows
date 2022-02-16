@@ -5,9 +5,9 @@ import "./Login.css";
 const image = require("../img/wellies.png");
 
 const Login = () => {
-  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +18,8 @@ const Login = () => {
     }
     login(user).then(response => {
       if (response.status === 200) {
-        response.json().then(user => setLocalStorage({ email: user.email, username: user.username }))
+        response.json().then(user => setLocalStorage({ email: user.email, username: user.username }));
+        navigate('/game');
       }
     });
   }
