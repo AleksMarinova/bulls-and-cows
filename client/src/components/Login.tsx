@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { login } from "../services/auth.service";
+import { login, setLocalStorage } from "../services/auth.service";
 import "./Login.css";
 const image = require("../img/wellies.png");
 
@@ -16,8 +16,11 @@ const Login = () => {
       email,
       password,
     }
-    login(user);
-    
+    login(user).then(response => {
+      if (response.status === 200) {
+        response.json().then(user => setLocalStorage({ email: user.email, username: user.username }))
+      }
+    });
   }
 
   return (
