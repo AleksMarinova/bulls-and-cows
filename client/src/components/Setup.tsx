@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getLocalStorage } from "../services/auth.service";
 import { io } from "socket.io-client";
 import Gameplay from "./Gameplay";
+import './Setup.css';
+const image = require("../img/chicken.png");
 
 const API_URL: any = process.env.REACT_APP_API_END_POINT;
 const socket = io(API_URL);
@@ -23,7 +25,10 @@ const Setup = () => {
 
   const newGameForm = () => {
     return (
-      <>
+      <div className= "game-form">
+        <div>
+          <img src={image} alt="chicken" />
+        </div>
         <h1>New Game</h1>
         <form onSubmit={(e) => handleStartGame(e)}>
           <input
@@ -33,7 +38,7 @@ const Setup = () => {
           />
           <button type="submit">Enter game</button>
         </form>
-      </>
+      </div>
     );
   };
 
