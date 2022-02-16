@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { login } from "../services/auth.service";
+import "./Login.css";
 const image = require("../img/wellies.png");
 
 const Login = () => {
@@ -15,7 +16,8 @@ const Login = () => {
       email,
       password,
     }
-    // post req
+    login(user);
+    
   }
 
   return (
