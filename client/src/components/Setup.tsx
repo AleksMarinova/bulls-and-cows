@@ -4,7 +4,6 @@ import { io } from "socket.io-client";
 import Gameplay from "./Gameplay";
 
 const API_URL: any = process.env.REACT_APP_API_END_POINT;
-console.log(API_URL);
 const socket = io(API_URL);
 
 const Setup = () => {
@@ -17,6 +16,8 @@ const Setup = () => {
 
   const handleStartGame = (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation();
+    socket.emit("join_room", { room, user });
     setInGame(true);
   };
 

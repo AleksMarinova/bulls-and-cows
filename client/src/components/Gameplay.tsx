@@ -5,7 +5,6 @@ interface IGameplayProps {
 }
 
 const Gameplay = ({user, room, socket}:IGameplayProps) => {
-  console.log(user, room, socket);
 
   return (
     <h1>Gameplay</h1>
