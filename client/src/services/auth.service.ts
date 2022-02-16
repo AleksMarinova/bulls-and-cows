@@ -1,6 +1,6 @@
 import { IUser } from './interface'
-// const API_URL = 'https://bulls-and-cows-server.herokuapp.com/api/';
-const API_URL = 'http://localhost:8001/api/';
+const API_URL = 'https://bulls-and-cows-server.herokuapp.com/api/';
+// const API_URL = 'http://localhost:8001/api/';
 
 export const setLocalStorage = (data: { username: string, email: string }) => {
   localStorage.setItem('Session', JSON.stringify(data));
