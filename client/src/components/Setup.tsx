@@ -26,7 +26,6 @@ const Setup = () => {
   useEffect(() => {
     socket.on('opponent_joined', data => {
       setInGame(data);
-      socket.emit("join_room", { room, user });
     })
   },[socket])
 
