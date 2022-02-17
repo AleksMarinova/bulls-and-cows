@@ -24,8 +24,12 @@ const io = new Server(httpServer, {
 
 io.on('connection', socket => {
     socket.on('join_room', data => {
-      socket.join(data)
+      socket.join(data.room);
       console.log(`${socket.id}: ${data.user.username} joined room ${data.room}`);
+    });
+    socket.on('submit_my_number', data => {
+      console.log(data);
+      socket.to(data.room).emit('receive_number', data);
     });
   });
 
