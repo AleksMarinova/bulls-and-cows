@@ -28,6 +28,10 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
   const PlayerGameNumber = () => {
     return (
       <div className="choose-number">
+        <div>
+          <img src={image} alt="tractor" />
+        </div>
+      <div className="enter-number-text">Enter your four digit number. You will be redirected to your game when your opponent is ready with their choice.</div>
         <form onSubmit={(e) => submitMyNumber(e)}>
           <input type="text" onChange={(e) => setMyNumber(e.target.value)} required/>
           <button type="submit">Confirm</button>
@@ -62,10 +66,7 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
 
   return (
     <div className="enter-number-container">
-     <div>
-       <img src={image} alt="tractor" />
-     </div>
-      <p>Enter your four digit number. You will be redirected to your game when your opponent is ready with their choice.</p>
+     
       {playerNumberChosen ? Board(): PlayerGameNumber()}
     </div>
     
