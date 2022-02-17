@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { validatePlayerNumber } from '../utils/utils'
 
 interface IGameplayProps {
   user: Object;
@@ -14,15 +15,17 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
   const submitMyNumber = async (e: React.FormEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    await socket.emit('submit_my_number', {room, user, number: myNumber});
-    setPlayerNumberChosen(true);
+    if (validatePlayerNumber(myNumber)) {
+      setPlayerNumberChosen(true);
+      return await socket.emit('submit_my_number', {room, user, number: myNumber});
+    } 
   }
 
   const PlayerGameNumber = () => {
     return (
       <div>
         <form onSubmit={(e) => submitMyNumber(e)}>
-          <input type="text" onChange={(e) => setMyNumber(e.target.value)}/>
+          <input type="text" onChange={(e) => setMyNumber(e.target.value)} required/>
           <button type="submit">Confirm</button>
         </form>
       </div>
@@ -40,6 +43,12 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
       </div>
     )
   }
+
+  useEffect(() => {
+    socket.on('receive_number', (data: object) => {
+      console.log(data)
+    })
+  }, [socket])
 
   return (
     <div>
