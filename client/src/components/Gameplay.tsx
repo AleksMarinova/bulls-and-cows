@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { validatePlayerNumber } from '../utils/utils'
+import Board from './Board'
 import './Gameplay.css'
 
 const image = require('../img/tractor.png')
@@ -65,7 +66,7 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
        <img src={image} alt="tractor" />
      </div>
       <p>Enter your four digit number. You will be redirected to your game when your opponent is ready with their choice.</p>
-      {playerNumberChosen ? Board() : PlayerGameNumber()}
+      {playerNumberChosen ? Board(): PlayerGameNumber()}
     </div>
     
   )
