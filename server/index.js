@@ -23,10 +23,10 @@ const io = new Server(httpServer, {
 });
 
 io.on('connection', socket => {
-    console.log(`User connected at ${ socket.id }`);
     socket.on('join_room', data => {
-      console.log(data);
-    })
+      socket.join(data)
+      console.log(`${socket.id}: ${data.user.username} joined room ${data.room}`);
+    });
   });
 
 mongoose.connect(DB_URL).then(response => {
