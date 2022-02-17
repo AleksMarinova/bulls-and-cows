@@ -1,0 +1,57 @@
+.enter-number-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+}
+
+.enter-number-container img {
+  width: 100%;
+    height: auto;
+    max-height: 50vh;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
+
+.enter-number-container p {
+  margin-bottom: 1rem;
+  width: 50%;
+}
+
+.enter-number-container .choose-number {
+  width: 50%;
+  border: none;
+  padding: 0.7rem;
+  font-size: 1rem;
+}
+
+.enter-number-container .choose-number form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.enter-number-container .choose-number form input {
+  margin-bottom: 1rem;
+  width: 80%;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 0.7rem;
+  font-size: 1rem;
+}
+
+.enter-number-container .choose-number form button {
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  width: 80%;
+  margin-bottom: 1rem;
+}

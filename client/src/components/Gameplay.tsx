@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { validatePlayerNumber } from '../utils/utils'
+import './Gameplay.css'
+
+const image = require('../img/tractor.png')
 
 interface IGameplayProps {
   user: Object;
@@ -23,7 +26,7 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
 
   const PlayerGameNumber = () => {
     return (
-      <div>
+      <div className="choose-number">
         <form onSubmit={(e) => submitMyNumber(e)}>
           <input type="text" onChange={(e) => setMyNumber(e.target.value)} required/>
           <button type="submit">Confirm</button>
@@ -57,8 +60,11 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
   }, [socket])
 
   return (
-    <div>
-      <h1>Bulls and Cows</h1>
+    <div className="enter-number-container">
+     <div>
+       <img src={image} alt="tractor" />
+     </div>
+      <p>Enter your four digit number. You will be redirected to your game when your opponent is ready with their choice.</p>
       {playerNumberChosen ? Board() : PlayerGameNumber()}
     </div>
     
