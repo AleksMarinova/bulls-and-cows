@@ -20,14 +20,10 @@ const Setup = () => {
     e.preventDefault();
     e.stopPropagation();
     socket.emit("join_room", { room, user });
-    //setInGame(true);
-  };
-
-  useEffect(() => {
     socket.on('opponent_joined', data => {
       setInGame(data);
     })
-  },[socket])
+  };
 
   const newGameForm = () => {
     return (
