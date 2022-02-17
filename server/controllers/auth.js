@@ -17,7 +17,6 @@ export const login = async (req, res, next) => {
   const userInDatabase = await user.findOne({ email });
   const descryptedPassword = bcrypt.compareSync(password, userInDatabase.password);
   if (userInDatabase && descryptedPassword) {
-    console.log(req.body, userInDatabase.email, userInDatabase.username);
     res.status(200).json({ email: userInDatabase.email, username: userInDatabase.username })
   }
 }
