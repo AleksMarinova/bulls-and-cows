@@ -9,7 +9,7 @@
 }
 
 .register-container img { 
-    width: 100%;
+    width: auto;
     height: auto;
     max-height: 40vh;
     margin-top: 5rem;

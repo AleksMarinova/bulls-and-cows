@@ -15,7 +15,7 @@
 }
 
 .home .logo img {
-    width: 100%;
+    width: auto;
     height: auto;
     max-height: 40vh;
     margin-top: 5rem;
@@ -32,6 +32,14 @@
     cursor: pointer;
     font-weight: 400;
     padding: 0.3rem;
+    color: white;
+    background-color: black;
+}
+
+.home button:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
 }
 
 .home button:last-child{ 

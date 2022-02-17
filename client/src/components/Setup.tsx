@@ -31,7 +31,7 @@ const Setup = () => {
         <div>
           <img src={image} alt="chicken" />
         </div>
-        <h1>New Game</h1>
+        
         <form onSubmit={(e) => handleStartGame(e)}>
           <input
             type="text"
@@ -40,6 +40,7 @@ const Setup = () => {
           />
           <button type="submit">Enter game</button>
         </form>
+        <div className="redirect-message">You will be redirected when your opponent joins the room.</div>
       </div>
     );
   };
