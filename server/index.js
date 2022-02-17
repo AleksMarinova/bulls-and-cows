@@ -22,11 +22,16 @@ const io = new Server(httpServer, {
   }
 });
 
+
 io.on('connection', socket => {
     socket.on('join_room', data => {
       socket.join(data.room);
       console.log(`${socket.id}: ${data.user.username} joined room ${data.room}`);
-      socket.to(data.room).emit('opponent_joined', true);
+      io.in(`${data.room}`).allSockets().then(res=>{
+       if(res.size === 2){
+        io.in(data.room).emit('opponent_joined', true);
+       }
+      });
     });
     socket.on('submit_my_number', data => {
       console.log(data);
