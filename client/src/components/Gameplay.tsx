@@ -44,9 +44,15 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
     )
   }
 
+  interface iOpponentPlayer {
+    number: string,
+    room: string, 
+    user: { email: string, username: string },
+  }
+
   useEffect(() => {
-    socket.on('receive_number', (data: object) => {
-      console.log(data)
+    socket.on('receive_number', (data: iOpponentPlayer) => {
+      setOpponentsNumber(data.number)
     })
   }, [socket])
 
