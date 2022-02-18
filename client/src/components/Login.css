@@ -48,6 +48,8 @@
 
 .login-container form button:hover {
     cursor: pointer;
+    background-color: white;
+    color: black;
 }
 
 .login-container .login-redirect-container{
@@ -71,4 +73,5 @@
 
 .login-container .login-redirect-container button:hover {
     cursor: pointer;
+    font-weight: bold;
 }

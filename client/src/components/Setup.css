@@ -51,6 +51,12 @@
   width: 60%;
 }
 
+.game-form button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
 .redirect-message { 
   font-size: 0.8rem;
   max-width: 25ch;
