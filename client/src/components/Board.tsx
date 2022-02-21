@@ -1,5 +1,3 @@
-
-
 interface IBoardProps {
   opponentsNumber: string;
   myNumber: string;
