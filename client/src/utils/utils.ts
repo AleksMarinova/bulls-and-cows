@@ -1,3 +1,5 @@
+import { IGuess } from "../services/interface";
+
 export const validatePlayerNumber = (number: string) => {
   if(!number.match(/^[0-9]*$/)) {
     return false;
@@ -17,7 +19,7 @@ export const calculateBullsAndCows = (guess: string, opponentsNumber: string) =>
     return alert('You won');
   }
   
-  const guessResult = {
+  const guessResult: IGuess = {
     guess,
     bulls: 0,
     cows: 0

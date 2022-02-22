@@ -24,3 +24,9 @@ export interface IUser {
     user: Object,
     room: string
   }
+
+export interface IGuess {
+  guess: string,
+  bulls: number, 
+  cows: number
+}
