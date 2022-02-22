@@ -1,7 +1,4 @@
-interface IBoardProps {
-  opponentsNumber: string;
-  myNumber: string;
-}
+import { IBoardProps } from '../services/interface';
 
 const Board = ({opponentsNumber, myNumber}: IBoardProps) => {
   return (

@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { validatePlayerNumber } from '../utils/utils'
-import Board from './Board'
-import './Gameplay.css'
+import React, { useState, useEffect } from 'react';
+import { validatePlayerNumber } from '../utils/utils';
+import Board from './Board';
+import { iOpponentPlayer, IGameplayProps } from '../services/interface';
+import './Gameplay.css';
 
 const image = require('../img/tractor.png')
-
-interface IGameplayProps {
-  user: Object;
-  room: string;
-  socket: any;
-}
 
 const Gameplay = ({user, room, socket}:IGameplayProps) => {
   const [playerNumberChosen, setPlayerNumberChosen] = useState(false);
@@ -40,24 +35,6 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
     )
   }
 
-  const Board = () => {
-    return (
-      <div>
-        <div className="guesses"></div>
-        <div> <h3>opponent's number: {opponentsNumber}</h3> </div>
-        <input type="text" />
-        <button>guess</button>
-        <div> <h3>my number: {myNumber}</h3> </div>
-      </div>
-    )
-  }
-
-  interface iOpponentPlayer {
-    number: string,
-    room: string, 
-    user: { email: string, username: string },
-  }
-
   useEffect(() => {
     socket.on('receive_number', (data: iOpponentPlayer) => {
       setOpponentsNumber(data.number)
@@ -66,10 +43,8 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
 
   return (
     <div className="enter-number-container">
-     
-      {playerNumberChosen ? Board(): PlayerGameNumber()}
+      {playerNumberChosen ? <Board myNumber={myNumber} opponentsNumber={opponentsNumber} /> : PlayerGameNumber()}
     </div>
-    
   )
 }
 
