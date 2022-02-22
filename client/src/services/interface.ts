@@ -19,4 +19,5 @@ export interface IUser {
  export interface IBoardProps {
     opponentsNumber: string,
     myNumber: string,
+    socket: any,
   }

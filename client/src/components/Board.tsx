@@ -1,6 +1,16 @@
 import { IBoardProps } from '../services/interface';
+// import { useEffect } from 'react';
+const Board = ({opponentsNumber, myNumber, socket}: IBoardProps) => {
 
-const Board = ({opponentsNumber, myNumber}: IBoardProps) => {
+
+  // const getMyTurn = async () => {
+  //   await socket.emit('get_my_turn');
+  // }
+
+  // useEffect(()=>{
+   
+  // }, []);
+
   return (
     <div>
       <div className="guesses"></div>
