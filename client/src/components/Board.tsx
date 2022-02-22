@@ -1,22 +1,20 @@
 import { IBoardProps } from '../services/interface';
-// import { useEffect } from 'react';
-const Board = ({opponentsNumber, myNumber, socket}: IBoardProps) => {
+import { useEffect, useState } from 'react';
 
+const Board = ({opponentsNumber, myNumber, socket, myInitialTurn}: IBoardProps) => {
 
-  // const getMyTurn = async () => {
-  //   await socket.emit('get_my_turn');
-  // }
-
-  // useEffect(()=>{
-   
-  // }, []);
+  const [myTurn, setMyTurn] = useState<boolean>(myInitialTurn);
 
   return (
     <div>
       <div className="guesses"></div>
+      <div>my turn: {myTurn.toString()}</div>
       <div> <h3>opponent's number: {opponentsNumber}</h3> </div>
-      <input type="text" />
-      <button>guess</button>
+      {
+         myTurn ? <div><input type="text" />
+         <button>guess</button></div> : <div>waiting for opponent's turn</div>
+      }
+     
       <div> <h3>my number: {myNumber}</h3> </div>
     </div>
   )

@@ -10,8 +10,7 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
   const [playerNumberChosen, setPlayerNumberChosen] = useState(false);
   const [myNumber, setMyNumber] = useState('');
   const [opponentsNumber, setOpponentsNumber] = useState('');
-  
-  const [myInitialTurn, setMyInitialTurn] = useState<boolean| void>();
+  const [myInitialTurn, setMyInitialTurn] = useState<boolean>(false);
   
   const getTurnFromServer = async () => {
     await socket.on('my_turn', (data: boolean) => {
@@ -57,7 +56,7 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
 
   return (
     <div className="enter-number-container">
-      {playerNumberChosen ? <Board myNumber={myNumber} opponentsNumber={opponentsNumber} socket={socket}/> : PlayerGameNumber()}
+      {playerNumberChosen ? <Board myNumber={myNumber} opponentsNumber={opponentsNumber} socket={socket} myInitialTurn={myInitialTurn} /> : PlayerGameNumber()}
     </div>
   )
 }

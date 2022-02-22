@@ -20,4 +20,5 @@ export interface IUser {
     opponentsNumber: string,
     myNumber: string,
     socket: any,
+    myInitialTurn: boolean;
   }
