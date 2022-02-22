@@ -15,13 +15,15 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
     if (validNumber === true) {
       const guessResult = calculateBullsAndCows(currentGuess, opponentsNumber);
       setGuesses([...guesses, guessResult]);
+      setMyTurn(!myTurn);
+      // emit to server turn true/false
     }
   }
 
   return (
     <div>
-      <div className="guesses"> {guesses.map((guess: IGuess) => {
-        return <div>{guess.guess} | Bulls: {guess.bulls} | Cows: {guess.cows}</div>;
+      <div className="guesses"> {guesses.map((guess: IGuess, index: number ) => {
+        return <div key={index} >{guess.guess} | Bulls: {guess.bulls} | Cows: {guess.cows}</div>;
       })}
       
        </div>
@@ -34,8 +36,8 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
             <input type="text" value={currentGuess} onChange={(e) => setCurrentGuess(e.target.value)} />
             <button type="submit">guess</button>
            </form>
-         </div> :
-        <div>waiting for opponent's turn</div>
+         </div> 
+         :  <div>waiting for opponent's turn</div>
       }
      
       <div> <h3>my number: {myNumber}</h3> </div>
