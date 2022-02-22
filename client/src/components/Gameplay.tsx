@@ -6,7 +6,7 @@ import './Gameplay.css';
 
 const image = require('../img/tractor.png')
 
-const Gameplay = ({user, room, socket}:IGameplayProps) => {
+const Gameplay = ({user, room, socket}: IGameplayProps) => {
   const [playerNumberChosen, setPlayerNumberChosen] = useState(false);
   const [myNumber, setMyNumber] = useState('');
   const [opponentsNumber, setOpponentsNumber] = useState('');
@@ -14,7 +14,6 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
   
   const getTurnFromServer = async () => {
     await socket.on('my_turn', (data: boolean) => {
-      console.log('my turn : ', data);
       setMyInitialTurn(data);
     });
   }
@@ -49,14 +48,19 @@ const Gameplay = ({user, room, socket}:IGameplayProps) => {
 
   useEffect(() => {
     socket.on('receive_number', (data: iOpponentPlayer) => {
-      console.log(data);
       setOpponentsNumber(data.number)
     })
   }, [socket])
 
   return (
     <div className="enter-number-container">
-      {playerNumberChosen ? <Board myNumber={myNumber} opponentsNumber={opponentsNumber} socket={socket} myInitialTurn={myInitialTurn} /> : PlayerGameNumber()}
+      {playerNumberChosen ? <Board myNumber={myNumber} 
+                              opponentsNumber={opponentsNumber} 
+                              socket={socket} 
+                                   myInitialTurn={myInitialTurn} 
+                                   user={user}
+                                   room={room}
+                                   /> : PlayerGameNumber()}
     </div>
   )
 }
