@@ -22,22 +22,27 @@ const io = new Server(httpServer, {
   }
 });
 
-
 io.on('connection', socket => {
-    socket.on('join_room', data => {
-      socket.join(data.room);
-      console.log(`${socket.id}: ${data.user.username} joined room ${data.room}`);
-      io.in(`${data.room}`).allSockets().then(res=>{
-       if(res.size === 2){
+  socket.on('join_room', data => {
+    socket.join(data.room);
+    console.log(`${socket.id}: ${data.user.username} joined room ${data.room}`);
+    io.in(`${data.room}`).allSockets().then(res=>{
+      if (res.size === 2) {
         io.in(data.room).emit('opponent_joined', true);
-       }
-      });
-    });
-    socket.on('submit_my_number', data => {
-      console.log(data);
-      socket.to(data.room).emit('receive_number', data);
+        const functionTF = true;
+        socket.to(data.room).emit('my_turn', functionTF);
+        socket.emit('my_turn', !functionTF);
+      }
     });
   });
+  socket.on('submit_my_number', data => {
+    socket.to(data.room).emit('receive_number', data);
+  });
+  
+  // socket.on('get_my_turn', ()=>{
+  //   //const turnArr = ['first', 'second'];
+  // })
+});
 
 mongoose.connect(DB_URL).then(response => {
   console.log('Connected to MongoDB');
@@ -54,7 +59,6 @@ app.use((err, req, res, next) => {
   console.log('im the error handler')
   res.status(500).json({ message: err.message });
 });
-
 
 process.on('SIGINT', () => {
   mongoose.connection.close(() => {
