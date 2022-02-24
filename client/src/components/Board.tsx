@@ -1,5 +1,5 @@
 import { IBoardProps, IGuess } from '../services/interface';
-import { ReactChild, ReactFragment, ReactPortal, useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { validatePlayerNumber, calculateBullsAndCows } from '../utils/utils';
 
 const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: IBoardProps) => {
@@ -16,9 +16,14 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
       const guessResult = calculateBullsAndCows(currentGuess, opponentsNumber);
       setGuesses([...guesses, guessResult]);
       setMyTurn(!myTurn);
-      // emit to server turn true/false
+      socket.emit('switch_turn', { room });
     }
   }
+
+
+  socket.on('your_turn', () => {
+    setMyTurn(!myTurn);
+  });
 
   return (
     <div>
