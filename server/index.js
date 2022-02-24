@@ -38,10 +38,9 @@ io.on('connection', socket => {
   socket.on('submit_my_number', data => {
     socket.to(data.room).emit('receive_number', data);
   });
-  
-  // socket.on('get_my_turn', ()=>{
-  //   //const turnArr = ['first', 'second'];
-  // })
+  socket.on('switch_turn', (data) => {
+    socket.to(data.room).emit('your_turn');
+  })
 });
 
 mongoose.connect(DB_URL).then(response => {
