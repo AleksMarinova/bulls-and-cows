@@ -7,3 +7,5 @@ Bulls and Cows is a 2 player game. One player thinks of a number, while the othe
 - Express
 - Mongoose w/ bcrypt
 - Socket.IO
+
+Link: https://bulls-n-cows.netlify.app/ 
