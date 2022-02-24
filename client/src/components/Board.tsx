@@ -45,7 +45,7 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
       
        </div>
       <div>my turn: {myTurn.toString()}</div>
-      <div> <h3>opponent's number: {opponentsNumber}</h3> </div>
+      {!youLost && !youWon ? null : youLost ? <p>You Lost! Opponent's number was {opponentsNumber}</p> : <p>You Won!</p>}
       {
          myTurn ? 
          <div>
@@ -56,7 +56,7 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
          </div> 
          :  <div>waiting for opponent's turn</div>
       }
-      {!youLost && !youWon ? null : youLost ? <p>You Lost!</p> : <p>You Won!</p>}
+      
       <div> <h3>my number: {myNumber}</h3> </div>
     </div>
   )
