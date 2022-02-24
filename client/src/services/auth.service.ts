@@ -25,7 +25,7 @@ export const register = async ({ email, password, username }: IUser) =>{
             password: password,
             username: username
         })
-    }).then(res => res.json())
+    }).then(res => res)
 }
 
 export const login = async ({ email, password }: IUser) => {
