@@ -7,6 +7,7 @@ const image = require("../img/wellies.png");
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [invalidInput, setInvalidInput] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -21,6 +22,9 @@ const Login = () => {
         response.json().then(user => setLocalStorage({ email: user.email, username: user.username }));
         navigate('/setup');
       }
+      if (response.status === 400){
+        setInvalidInput(true);
+      }
     });
   }
 
@@ -31,13 +35,15 @@ const Login = () => {
       </div>
       <div className="login-form">
         <form onSubmit={(e)=> handleSubmit(e)}>
-          <input type="text" className="login-input" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} />
+          <input required type="text" className="login-input" placeholder="Email" value={email} onChange={(e)=>setEmail(e.target.value)} />
           <input
+            required
             type="password"
             className="login-input"
             placeholder="Password"
             value={password} onChange={(e)=>setPassword(e.target.value)}
           />
+          {invalidInput ? <p>Invalid credentials, please try again</p> : null }
           <button>Login</button>
         </form>
       </div>

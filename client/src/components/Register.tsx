@@ -26,11 +26,11 @@ const handleSubmit = (e: React.FormEvent) => {
         </div>
         <form onSubmit={(e)=>handleSubmit(e)} >
            
-           <input type="text" placeholder="username" value={username} onChange={(e)=>setUsername(e.target.value)}/>
+           <input type="text" required placeholder="username" value={username} onChange={(e)=>setUsername(e.target.value)}/>
            
-           <input type="text" placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+           <input type="text" required placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
            
-           <input type="password" placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+           <input type="password" required placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
            <button>Register</button>
         </form>
         <div className="register-redirect">

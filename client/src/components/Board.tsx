@@ -1,4 +1,5 @@
 import { IBoardProps, IGuess } from '../services/interface';
+import './Board.css'
 import { useState } from 'react';
 import { validatePlayerNumber, calculateBullsAndCows } from '../utils/utils';
 
