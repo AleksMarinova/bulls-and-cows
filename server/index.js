@@ -41,6 +41,9 @@ io.on('connection', socket => {
   socket.on('switch_turn', (data) => {
     socket.to(data.room).emit('your_turn');
   })
+  socket.on('opponent_lost', (data) => {
+    socket.to(data.room).emit('you_lost');
+  })
 });
 
 mongoose.connect(DB_URL).then(response => {
