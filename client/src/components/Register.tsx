@@ -16,7 +16,7 @@ const handleSubmit = (e: React.FormEvent) => {
   e.stopPropagation();
   register({username, email, password})
     .then(res => {
-      if (res.status === 200) {
+      if (res.status === 201) {
         navigate('/login');
       }
 
