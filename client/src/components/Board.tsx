@@ -1,5 +1,5 @@
 import { IBoardProps, IGuess } from '../services/interface';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { validatePlayerNumber, calculateBullsAndCows } from '../utils/utils';
 
 const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: IBoardProps) => {
