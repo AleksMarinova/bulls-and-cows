@@ -6,6 +6,8 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
   const [myTurn, setMyTurn] = useState<boolean>(myInitialTurn);
   const [currentGuess, setCurrentGuess] = useState<string>('');
   const [guesses, setGuesses] = useState([] as any);
+  const [youWon, setYouWon] = useState(false);
+  const [youLost, setYouLost] = useState(false);
   
   const submitGuess = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,15 +16,25 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
     const validNumber = validatePlayerNumber(currentGuess);
     if (validNumber === true) {
       const guessResult = calculateBullsAndCows(currentGuess, opponentsNumber);
+      
+      if (guessResult === 'You won') {
+        setYouWon(true);
+        socket.emit('opponent_lost', { room });
+        return;
+      }
+
       setGuesses([...guesses, guessResult]);
       setMyTurn(!myTurn);
       socket.emit('switch_turn', { room });
     }
   }
 
-
   socket.on('your_turn', () => {
     setMyTurn(!myTurn);
+  });
+
+  socket.on('you_lost', () => {
+    setYouLost(true);
   });
 
   return (
@@ -44,7 +56,7 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
          </div> 
          :  <div>waiting for opponent's turn</div>
       }
-     
+      {!youLost && !youWon ? null : youLost ? <p>You Lost!</p> : <p>You Won!</p>}
       <div> <h3>my number: {myNumber}</h3> </div>
     </div>
   )

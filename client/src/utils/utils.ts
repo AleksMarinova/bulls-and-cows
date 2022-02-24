@@ -16,7 +16,7 @@ export const validatePlayerNumber = (number: string) => {
 
 export const calculateBullsAndCows = (guess: string, opponentsNumber: string) => {
   if (guess === opponentsNumber){
-    return alert('You won');
+    return "You won";
   }
   
   const guessResult: IGuess = {
