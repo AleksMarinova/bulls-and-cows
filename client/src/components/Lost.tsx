@@ -10,7 +10,7 @@ const Lost =()=> {
       <div>
         <img src={image} alt="crops" className="lost-image" />
       </div>
-      <div><h1> YOU WON! </h1></div>
+      <div><h1> YOU LOST! </h1></div>
       <div className="lost-redirect-container">
         <button onClick={() => navigate("/setup")}>Play again</button>
       </div>
