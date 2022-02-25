@@ -2,6 +2,7 @@ import { IBoardProps, IGuess } from '../services/interface';
 import './Board.css'
 import { useState } from 'react';
 import { validatePlayerNumber, calculateBullsAndCows } from '../utils/utils';
+import { useNavigate } from "react-router-dom";
 
 const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: IBoardProps) => {
   const [myTurn, setMyTurn] = useState<boolean>(myInitialTurn);
@@ -9,6 +10,7 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
   const [guesses, setGuesses] = useState([] as any);
   const [youWon, setYouWon] = useState(false);
   const [youLost, setYouLost] = useState(false);
+  const navigate = useNavigate();
   
   const submitGuess = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,7 +23,9 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
       if (guessResult === 'You won') {
         setYouWon(true);
         socket.emit('opponent_lost', { room });
-        return;
+        setTimeout(() => {
+          navigate('/won', { replace: true });
+        }, 3000)
       }
 
       setGuesses([...guesses, guessResult]);
@@ -36,6 +40,9 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
 
   socket.on('you_lost', () => {
     setYouLost(true);
+    setTimeout(() => {
+      navigate('/lost', { replace: true });
+    }, 3000)
   });
 
   return (
