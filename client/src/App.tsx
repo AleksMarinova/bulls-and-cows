@@ -6,7 +6,8 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Register from './components/Register';
 import Won from './components/Won';
-import Lost from './components/Lost'
+import Lost from './components/Lost';
+import Practice from './components/Practice';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Route path='/setup' element={<Setup />} />
         <Route path='/won' element={<Won />} />
         <Route path='/lost' element={<Lost />} />
+        <Route path='/practice' element={<Practice />} />
       </Routes>
     </div>
   );
