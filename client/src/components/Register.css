@@ -13,7 +13,6 @@
     height: auto;
     max-height: 40vh;
     margin-top: 5rem;
-   
 }
 
 .register-container form { 
@@ -33,7 +32,6 @@
     border-radius: 5px;
     padding: 0.7rem;
     font-size: 1rem;
-
 }
 
 .register-container form button{

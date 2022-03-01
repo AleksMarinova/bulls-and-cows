@@ -8,6 +8,7 @@ import Register from './components/Register';
 import Won from './components/Won';
 import Lost from './components/Lost';
 import Practice from './components/Practice';
+import RequireAuth from './components/RequireAuth';
 
 const App: React.FC = () => {
   return (
@@ -16,7 +17,12 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
-        <Route path='/setup' element={<Setup />} />
+        <Route path='/setup' element={
+        // <RequireAuth>
+          <Setup />
+        // </RequireAuth>
+        }> 
+        </Route>
         <Route path='/won' element={<Won />} />
         <Route path='/lost' element={<Lost />} />
         <Route path='/practice' element={<Practice />} />
