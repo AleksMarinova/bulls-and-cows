@@ -30,6 +30,7 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
 
       setGuesses([...guesses, guessResult]);
       setMyTurn(!myTurn);
+      setCurrentGuess('');
       socket.emit('switch_turn', { room });
     }
   }
@@ -47,9 +48,10 @@ const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: I
 
   return (
     <div className="gameplay-container" >
+      <div className="gameplay-title" > <h1>Cows 'n Bulls</h1> </div>
       <div className="gameplay-myNumber" > <h5>my number: {myNumber}</h5> </div>
       <div className="guesses"> {guesses.map((guess: IGuess, index: number ) => {
-        return <div className="guess" key={index} >{guess.guess} Bulls: {guess.bulls} Cows: {guess.cows}</div>;
+        return <div className="guess" key={index} >{guess.guess} -- Bulls: {guess.bulls} -- Cows: {guess.cows}</div>;
       })}
       
        </div>
