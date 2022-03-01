@@ -34,6 +34,8 @@
     padding: 0.3rem;
     color: white;
     background-color: black;
+    transition: .3s;
+    margin: .5rem;
 }
 
 .home button:hover {
@@ -43,6 +45,6 @@
 }
 
 .home button:last-child{ 
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     margin-bottom: 5rem;
 }

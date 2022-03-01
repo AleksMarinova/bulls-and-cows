@@ -44,6 +44,7 @@
     padding: 0.5rem;
     font-size: 1.3rem;
     width: 80%;
+    transition: .3s;
 }
 
 .login-container form button:hover {
