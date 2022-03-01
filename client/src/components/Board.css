@@ -4,16 +4,21 @@
   align-items: center;
 }
 
+.board-image {
+  width: auto;
+  height: auto;
+  max-height: 20vh;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+
 .gameplay-title {
   font-size: 3rem;
+  text-align: center;
 }
 
 .gameplay-myNumber {
   font-size: 2rem;
-}
-
-.gameplay-container .guess-form { 
-  
 }
 
 .guess-form button {
@@ -25,21 +30,30 @@
   margin-left: 1rem;
 }
 
+.guess-form {
+  font-size: 2rem;
+  margin: 2rem;
+}
+
 .guess-form input {
-  font-size: 1rem;
+  font-size: 2rem;
   border: none;
-  border-bottom: 1px solid grey;
+  border-bottom: .15rem solid grey;
+  text-align: center;
 }
 
 .guesses {
   display: flex;
   flex-direction: column;
-  height: 120px;
+  height: 200px;
   overflow: scroll;
+  width: 80%;
+  font-size: 1.3rem;
 }
 
 .guess {
-  
+  display: flex;
+  justify-content: space-around;
 }
 
 /* .gameplay-container { 
