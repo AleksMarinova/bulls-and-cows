@@ -1,0 +1,44 @@
+.gameplay-container { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.board-image {
+  width: auto;
+  height: auto;
+  max-height: 30vh;
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+
+.gameplay-title {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.guesses {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  overflow: scroll;
+  width: 80%;
+  font-size: 1.3rem;
+}
+
+.guess {
+  display: flex;
+  justify-content: space-around;
+}
+
+.guess-form {
+  font-size: 2rem;
+  margin: 2rem;
+}
+
+.guess-form input {
+  font-size: 2rem;
+  border: none;
+  border-bottom: .15rem solid grey;
+  text-align: center;
+}

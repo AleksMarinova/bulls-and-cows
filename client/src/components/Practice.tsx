@@ -2,6 +2,9 @@ import { FC, useState, useEffect, FormEvent } from 'react';
 import { IGuess } from '../services/interface';
 import { generateRandomNumber, validatePlayerNumber, calculateBullsAndCows } from '../utils/utils';
 import { useNavigate } from "react-router-dom";
+import './Practice.css'
+
+import cow from "../img/caring-cow.png";
 
 const Practice: FC = () => {
   const [computerNumber, setComputerNumber] = useState<string>('');
@@ -29,12 +32,25 @@ const Practice: FC = () => {
   }, [])
 
   return (
-    <div>
-      <div>{guesses.map((guess, i) => <div key={i}>{guess.guess} Bulls: {guess.bulls} Cows: {guess.cows}</div>)}</div>
-      <form onSubmit={e => handleSubmit(e)}>
-        <input type="text" value={currentGuess} onChange={e => setCurrentGuess(e.target.value)} />
-        <button type="submit"> Guess </button>
-      </form>
+    <div className="gameplay-container" >
+      <div className="gameplay-title" > <h1>Bulls 'n Cows </h1> </div>
+      <div><img src={cow} alt="crops" className="board-image" /></div>
+
+      <div className="guesses">{guesses.map((guess, i) => 
+        <div key={i} className="guess"> 
+          <div>{guess.guess}</div> 
+          <div>Bulls: {guess.bulls} </div>
+          <div>Cows: {guess.cows}</div>
+        </div>)}
+      </div>
+
+      <div className="guess-form" >
+        <form onSubmit={e => handleSubmit(e)}>
+          <input type="text" value={currentGuess} onChange={e => setCurrentGuess(e.target.value)} />
+          <button type="submit"> Guess </button>
+        </form>
+      </div>
+
     </div>
   );
 }

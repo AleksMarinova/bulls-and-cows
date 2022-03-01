@@ -4,9 +4,8 @@ import { useState } from 'react';
 import { validatePlayerNumber, calculateBullsAndCows } from '../utils/utils';
 import { useNavigate } from "react-router-dom";
 
-const cow = require("../img/angry-cow.png");
-const bull = require("../img/angry-bull.png");
-
+import cow from "../img/angry-cow.png";
+import bull from "../img/angry-bull.png";
 
 const Board = ({opponentsNumber, myNumber, socket, myInitialTurn, room, user}: IBoardProps) => {
   const [myTurn, setMyTurn] = useState<boolean>(myInitialTurn);
