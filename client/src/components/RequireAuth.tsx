@@ -1,25 +1,16 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import { getLocalStorage } from "../services/auth.service";
 
-export default function RequireAuth({children}:any){
-  const navigate = useNavigate();
-  const [userAuth, setUserAuth] = useState(false);
+export default function RequireAuth({children}:any) {
+  const [token, setToken] = useState();
 
-  useEffect(() => {
-    setUserAuth(() => {
-      const localRef = getLocalStorage();
-      return localRef;
-    })
-  }, [])
+  const [userAuth] = useState(() => {
+    const localRef = getLocalStorage();
+    return localRef;
+  });
 
-  useEffect(() => {
-    if (userAuth === false) {
-      return navigate('/');
-    }
-  }, [userAuth])
-
-  return userAuth
+  return token
   ? children
-  : null
+  : <Navigate to='/' replace />
 }

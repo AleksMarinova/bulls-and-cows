@@ -7,11 +7,12 @@ export const setLocalStorage = (data: { username: string, email: string }) => {
 }
 
 export const getLocalStorage = (): any => {
-   const value = localStorage.getItem('Session');
-   if (typeof value === 'string') {
+  const value = localStorage.getItem('Session');
+  if (typeof value === 'string') {
+    console.log(value)
     return JSON.parse(value);
-   }
-   return false;
+  }
+  return '';
 }
 
 export const register = async ({ email, password, username }: IUser) =>{
