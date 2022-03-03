@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, FormEvent } from 'react';
+import { FC, useState, useEffect, FormEvent, useRef } from 'react';
 import { IGuess } from '../services/interface';
 import { generateRandomNumber, validatePlayerNumber, calculateBullsAndCows } from '../utils/utils';
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,13 @@ const Practice: FC = () => {
   const [currentGuess, setCurrentGuess] = useState<string>('');
   const [guesses, setGuesses] = useState<IGuess[]>([]);
   const navigate = useNavigate()
+  const guessesRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    guessesRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  useEffect(() => {scrollToBottom()}, [guesses]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,6 +49,7 @@ const Practice: FC = () => {
           <div>Bulls: {guess.bulls} </div>
           <div>Cows: {guess.cows}</div>
         </div>)}
+        <div ref={guessesRef}></div>
       </div>
 
       <div className="guess-form" >
