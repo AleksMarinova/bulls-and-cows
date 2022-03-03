@@ -4,7 +4,11 @@ import { login, setLocalStorage } from "../services/auth.service";
 import "./Login.css";
 const image = require("../img/wellies.png");
 
-const Login = () => {
+interface iLogin {
+  setUserLoggedIn: any
+}
+
+const Login = ({ setUserLoggedIn } : iLogin) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [invalidInput, setInvalidInput] = useState(false);
@@ -20,6 +24,7 @@ const Login = () => {
     login(user).then(response => {
       if (response.status === 200) {
         response.json().then(user => setLocalStorage({ email: user.email, username: user.username }));
+        setUserLoggedIn(true);
         navigate('/setup');
       }
       if (response.status === 400){
